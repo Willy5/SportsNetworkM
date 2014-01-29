@@ -7,6 +7,17 @@
 /app/logs/*
 /vendor/
 /app/config/parameters.yml
+/bin/
+/composer.phar
+/phpunit.phar
+/.project
+/.settings/
+/.buildpath
+*.php~
+*~
+/web/uploads/*
+/vagrant/.vagrant/
+/index.html
 
 # Others ignoring files #
 
