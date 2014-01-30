@@ -1,3 +1,3 @@
-the_fireflies_sport_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TheFirefliesSportBundle:Default:index }
+TheFirefliesSportBundle_sport:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/sport.yml"
+    prefix:   /sport
