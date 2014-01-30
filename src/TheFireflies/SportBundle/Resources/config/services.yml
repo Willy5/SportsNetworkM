@@ -1,0 +1,7 @@
+parameters:
+#    the_fireflies_sport.example.class: TheFireflies\SportBundle\Example
+
+services:
+#    the_fireflies_sport.example:
+#        class: %the_fireflies_sport.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

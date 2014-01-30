@@ -1,0 +1,4 @@
+the_fireflies_sport:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing.yml"
+    prefix:   /
+
