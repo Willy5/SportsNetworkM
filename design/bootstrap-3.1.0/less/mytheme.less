@@ -7,6 +7,12 @@ body {
 	padding-top: @body-padding-top;
 }
 
+// Headings
+@font-face {
+	font-family: 'Fjalla';
+	src: url('../fonts/FjallaOne-Regular.otf') format('otf');
+}
+
 // Header
 .navbar-inverse {
 	#gradient > .vertical(@start-color: @header-top-color; @end-color: @header-bottom-color);
@@ -24,14 +30,27 @@ body {
 	border-top: 3px solid @color1;
 	margin-bottom: 15px;
 }
-.widget-header h1 {
-	margin: 0;
+.widget-header h2,
+.widget-header .h5 {
+	margin: 0 auto;
 	text-transform: uppercase;
+	
+	&:first-child {
+		margin-top: 0;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.widget-header .h5 {
+	color: @color1;
 }
 
 .widget-header {
 	border-width: 0 0 1px 0;
 	border-style: solid;
+	padding: 3px;
 }
 .widget-row {border-width: 1px 0; border-style: solid;}
 
