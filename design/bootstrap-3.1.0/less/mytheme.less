@@ -2,7 +2,10 @@
 // My Theme
 // --------------------------------------------------
 
-// Global
+//
+// Widget
+// ----------------------------
+
 body {
 	padding-top: @body-padding-top;
 }
@@ -62,6 +65,7 @@ body {
 	padding: 3px;
 }
 .widget-row {border-width: 1px 0; border-style: solid;}
+.widget-case {border-width: 1px; border-style: solid;}
 
 .widget-row:last-child {border-bottom-width: 0;}
 
@@ -69,7 +73,8 @@ body {
 
 // Tons
 .widget,
-.widget-row {
+.widget-row,
+.widget-case {
 	#gradient > .vertical(@start-color: @widget-color-top; @end-color: @widget-color-bottom);
 	.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
 	
@@ -90,13 +95,36 @@ body {
 	}
 }
 .widget-row,
-.widget-header {
+.widget-header,
+.widget-case {
 	border-bottom-color: @gray-light;
 	border-top-color: white;
+	border-right-color: @gray-light;
+	border-left-color: white;
 	
 	&.hoverable:hover,
 	.hoverable:hover & {
 		border-bottom-color: black;
 		border-top-color: @gray;
+		border-right-color: black;
+		border-left-color: @gray;
 	}
+}
+
+// Grid system
+
+.content-primary {
+	.make-md-column(8);
+	.make-md-column-push(4);
+}
+.content-secondary {
+	.make-md-column(4);
+	.make-md-column-pull(8);
+}
+
+.mid-row {
+  .make-row();
+}
+.mid-content {
+  .make-sm-column(6, 0);
 }
