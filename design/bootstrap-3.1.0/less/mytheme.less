@@ -1,0 +1,74 @@
+//
+// My Theme
+// --------------------------------------------------
+
+// Global
+body {
+	padding-top: @body-padding-top;
+}
+
+// Header
+.navbar-inverse {
+	#gradient > .vertical(@start-color: @header-top-color; @end-color: @header-bottom-color);
+	.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+	border-bottom: 4px solid @color1;
+}
+
+//
+// Widget
+// ----------------------------
+
+// Général
+.widget {
+	border: 1px solid @gray-light;
+	border-top: 3px solid @color1;
+	margin-bottom: 15px;
+}
+.widget-header h1 {
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.widget-header {
+	border-width: 0 0 1px 0;
+	border-style: solid;
+}
+.widget-row {border-width: 1px 0; border-style: solid;}
+
+.widget-row:last-child {border-bottom-width: 0;}
+
+.hoverable:hover {color: white;}
+
+// Tons
+.widget,
+.widget-row {
+	#gradient > .vertical(@start-color: @widget-color-top; @end-color: @widget-color-bottom);
+	.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+	
+	&.hoverable:hover,
+	.hoverable:hover & {
+		#gradient > .vertical(@start-color: @widget-color-hover-top; @end-color: @widget-color-hover-bottom);
+		.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+	}
+}
+.widget-header {
+	#gradient > .vertical(@start-color: @widget-color-header-top; @end-color: @widget-color-header-bottom);
+	.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+	
+	&.hoverable:hover,
+	.hoverable:hover & {
+		#gradient > .vertical(@start-color: @widget-color-hover-header-top; @end-color: @widget-color-hover-header-bottom);
+		.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+	}
+}
+.widget-row,
+.widget-header {
+	border-bottom-color: @gray-light;
+	border-top-color: white;
+	
+	&.hoverable:hover,
+	.hoverable:hover & {
+		border-bottom-color: black;
+		border-top-color: @gray;
+	}
+}
