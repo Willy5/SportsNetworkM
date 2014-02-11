@@ -14,8 +14,18 @@ TheFireflies\SportBundle\Entity\Sport:
                 max: 30
                 minMessage: Un minimum de un joueur est requis.
                 maxMessage: 30 joueurs maximum par équipe est autorisé.
+    constraints:
+        - Callback:
+            methods: [isSportValid]
 
 TheFireflies\SportBundle\Entity\Club:
+    properties:
+        name:
+            - NotBlank: ~
+        website:
+            - Url:
+
+TheFireflies\SportBundle\Entity\Team:
     properties:
         name:
             - NotBlank: ~

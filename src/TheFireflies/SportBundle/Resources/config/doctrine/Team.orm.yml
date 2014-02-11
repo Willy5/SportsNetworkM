@@ -1,0 +1,23 @@
+TheFireflies\SportBundle\Entity\Team:
+    type: entity
+    table: null
+    repositoryClass: TheFireflies\SportBundle\Entity\TeamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        division:
+            type: string
+            length: 255
+            nullable: true
+        website:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

@@ -3,6 +3,7 @@
 namespace TheFireflies\SportBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Sport
@@ -107,5 +108,16 @@ class Sport
     public function getNbPlayersMax()
     {
         return $this->nbPlayersMax;
+    }
+
+    /**
+     * Validation constraint
+     */
+    public function isSportValid(ExecutionContextInterface $context)
+    {
+        if($this->getNbPlayersMin() > $this->getNbPlayersMax())
+        {
+            $context->addViolationAt('nbPlayersMax', 'On ne peut pas avoir moins de joueurs max que de joueurs min', array(), null);
+        }
     }
 }
