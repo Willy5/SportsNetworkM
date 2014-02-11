@@ -1,15 +1,3 @@
-# Symfony #
-###################
-
-/web/bundles/
-/app/bootstrap*
-/app/cache/*
-/app/logs/*
-/vendor/
-/app/config/parameters.yml
-/bin/
-/composer.phar
-/phpunit.phar
 /.project
 /.settings/
 /.buildpath
