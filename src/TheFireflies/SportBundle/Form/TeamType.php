@@ -16,6 +16,13 @@ class TeamType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('club', 'entity', array(
+                'label' => 'Club',
+                'class' => 'TheFirefliesSportBundle:Club',
+                'required' => false,
+                'multiple' => false,
+                'property' => 'name'
+        ))
             ->add('division')
             ->add('website')
         ;

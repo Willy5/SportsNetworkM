@@ -7,6 +7,10 @@ TheFireflies\SportBundle\Entity\Club:
             id: true
             generator:
                 strategy: AUTO
+    oneToMany:
+        teams:
+            targetEntity: Team
+            mappedBy: club
     fields:
         name:
             type: string

@@ -13,6 +13,11 @@ class Club
      * @var integer
      */
     private $id;
+    
+    /**
+     * @var Team
+     */
+    private $teams;
 
     /**
      * @var string
@@ -24,6 +29,13 @@ class Club
      */
     private $website;
 
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -33,6 +45,39 @@ class Club
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Add team
+     *
+     * @param Team $teams
+     * @return Club
+     */
+    public function addTeam(Team $team)
+    {
+        $this->teams[] = $team;
+    
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param Team $teams
+     */
+    public function removeTeam(Team $team)
+    {
+        $this->teams->removeElement($team);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeams()
+    {
+        return $this->teams;
     }
 
     /**

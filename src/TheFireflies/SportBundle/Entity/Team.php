@@ -13,6 +13,11 @@ class Team
      * @var integer
      */
     private $id;
+    
+    /**
+     * @var Club
+     */
+    private $club;
 
     /**
      * @var string
@@ -38,6 +43,29 @@ class Team
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set club
+     *
+     * @param Club $club
+     * @return Team
+     */
+    public function setClub(Club $club = null)
+    {
+        $this->club = $club;
+        
+        return $this;
+    }
+
+    /**
+     * Get club
+     *
+     * @return Club
+     */
+    public function getClub()
+    {
+        return $this->club;
     }
 
     /**
