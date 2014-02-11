@@ -2,6 +2,10 @@ TheFirefliesSportBundle_sport:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/sport.yml"
     prefix:   /sport
 
+TheFirefliesSportBundle_club:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/club.yml"
+    prefix:   /club
+
 home:
     pattern:  /
     defaults: { _controller: "TheFirefliesSportBundle:Home:index" }

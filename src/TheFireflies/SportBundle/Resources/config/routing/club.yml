@@ -1,0 +1,30 @@
+club:
+    pattern:  /
+    defaults: { _controller: "TheFirefliesSportBundle:Club:index" }
+
+club_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TheFirefliesSportBundle:Club:show" }
+
+club_new:
+    pattern:  /new
+    defaults: { _controller: "TheFirefliesSportBundle:Club:new" }
+
+club_create:
+    pattern:  /create
+    defaults: { _controller: "TheFirefliesSportBundle:Club:create" }
+    requirements: { _method: post }
+
+club_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TheFirefliesSportBundle:Club:edit" }
+
+club_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TheFirefliesSportBundle:Club:update" }
+    requirements: { _method: post|put }
+
+club_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TheFirefliesSportBundle:Club:delete" }
+    requirements: { _method: post|delete }
