@@ -1,3 +1,8 @@
+# Fichier eclipse #
+###################
+*.project
+*.classpath
+
 # Compiled source #
 ###################
 *.com
