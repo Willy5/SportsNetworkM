@@ -2,31 +2,60 @@
 
 namespace TheFireflies\SportBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Sport
+ * 
+ * @UniqueEntity("name")
+ * @Assert\Callback(methods={"isSportValid"})
+ * @ORM\Table(name="sport")
+ * @ORM\Entity(repositoryClass="SportRepository")
  */
 class Sport
 {
     /**
      * @var integer
+     * 
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank()
+     * @ORM\Column(name="name", type="string", length=255, unique=true, nullable=false)
      */
     private $name;
 
     /**
      * @var integer
+     * 
+     * @Assert\Range(
+     *      min = "1",
+     *      minMessage = "Un minimum de un joueur est requis.",
+     *      max = "30",
+     *      maxMessage = "30 joueurs maximum par équipe est autorisé.")
+     * @ORM\Column(name="nbPlayersMin", type="integer", unique=false, nullable=false)
      */
     private $nbPlayersMin;
 
     /**
      * @var integer
+     * 
+     * @Assert\Range(
+     *      min = "1",
+     *      minMessage = "Un minimum de un joueur est requis.",
+     *      max = "30",
+     *      maxMessage = "30 joueurs maximum par équipe est autorisé.")
+     * @ORM\Column(name="nbPlayersMax", type="integer", unique=false, nullable=false)
      */
     private $nbPlayersMax;
 
