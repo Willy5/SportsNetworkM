@@ -10,6 +10,16 @@ body {
 	padding-top: @body-padding-top;
 }
 
+.top-container {
+	#gradient > .vertical(@start-color: @top-container-top-color; @end-color: @top-container-bottom-color);
+	.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+    border-bottom: 2px solid @top-container-border-color;
+}
+
+.main-container {
+    margin-top: @main-container-margin-top;
+}
+
 .navbar .brand {
     max-height: 40px;
     overflow: visible;

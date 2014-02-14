@@ -4,9 +4,10 @@
 
 // Global
 @body-bg:						#ecedee;
-@body-padding-top:				80px;
+@body-padding-top:				@navbar-height;
 @logo-height:					40px;
 @logo-brand-top-margin:			(@navbar-height - @logo-height) / 2 ;
+@main-container-margin-top:     40px;
 
 // Headings
 @headings-font-family:    		"Fjalla One", @font-family-sans-serif;
@@ -33,6 +34,11 @@
 // Header
 @header-top-color:				#1B1B1B;
 @header-bottom-color:        	lighten(@header-top-color, 10%);
+
+// Top Container
+@top-container-top-color:       lighten(#000, 90%);
+@top-container-bottom-color:    darken(@top-container-top-color, 2%);
+@top-container-border-color:    darken(@top-container-top-color, 10%);
 
 // Widget
 @widget-header:					'.widget > header';
