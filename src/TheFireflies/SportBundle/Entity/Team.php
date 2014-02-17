@@ -39,6 +39,13 @@ class Team
      *                orphanRemoval=true)
      */
     private $instancesTeam;
+    
+    /**
+     * @var Event
+     * 
+     * @ORM\ManyToMany(targetEntity="Event", mappedBy="teams")
+     */
+    private $events;
 
     /**
      * @var string
@@ -137,6 +144,39 @@ class Team
     public function getInstancesTeam()
     {
         return $this->instancesTeam;
+    }
+    
+    /**
+     * Add event
+     *
+     * @param Event $event
+     * @return Team
+     */
+    public function addEvent(Event $event)
+    {
+        $this->events[] = $event;
+    
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param Event $event
+     */
+    public function removeEvent(Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 
     /**
