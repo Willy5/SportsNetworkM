@@ -67,7 +67,7 @@ class Club
     /**
      * Add team
      *
-     * @param Team $teams
+     * @param Team $team
      * @return Club
      */
     public function addTeam(Team $team)
@@ -80,7 +80,7 @@ class Club
     /**
      * Remove team
      *
-     * @param Team $teams
+     * @param Team $team
      */
     public function removeTeam(Team $team)
     {

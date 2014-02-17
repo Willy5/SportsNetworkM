@@ -29,6 +29,16 @@ class Team
      * @ORM\JoinColumn(name="club_id", referencedColumnName="id")
      */
     private $club;
+    
+    /**
+     * @var InstanceTeam
+     * 
+     * @ORM\OneToMany(targetEntity="InstanceTeam",
+     *                mappedBy="team",
+     *                cascade={"persist", "remove"},
+     *                orphanRemoval=true)
+     */
+    private $instancesTeam;
 
     /**
      * @var string
@@ -52,6 +62,15 @@ class Team
      * @ORM\Column(name="website", type="string", length=255, unique=false, nullable=true)
      */
     private $website;
+
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->instancesTeam = new ArrayCollection();
+    }
 
 
     /**
@@ -85,6 +104,39 @@ class Team
     public function getClub()
     {
         return $this->club;
+    }
+    
+    /**
+     * Add instanceTeam
+     *
+     * @param InstanceTeam $instanceTeam
+     * @return Team
+     */
+    public function addInstanceTeam(InstanceTeam $instanceTeam)
+    {
+        $this->instancesTeam[] = $instanceTeam;
+    
+        return $this;
+    }
+
+    /**
+     * Remove instanceTeam
+     *
+     * @param InstanceTeam $instanceTeam
+     */
+    public function removeInstanceTeam(InstanceTeam $instanceTeam)
+    {
+        $this->instancesTeam->removeElement($instanceTeam);
+    }
+
+    /**
+     * Get instancesTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInstancesTeam()
+    {
+        return $this->instancesTeam;
     }
 
     /**
