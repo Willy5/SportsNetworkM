@@ -1,40 +1,36 @@
 {% extends '::base.html.twig' %}
 
+{% block topbody %}
+    <h1>Sport : {{ entity.name }}</h1>
+    <p><a href="{{ path('sport') }}">Revenir à la liste des sports</a></p>
+{% endblock %}
+
 {% block body -%}
-    <h1>Sport</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Nbplayersmin</th>
-                <td>{{ entity.nbPlayersMin }}</td>
-            </tr>
-            <tr>
-                <th>Nbplayersmax</th>
-                <td>{{ entity.nbPlayersMax }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('sport') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('sport_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <section class="widget">
+        <header class="widget-header">
+            <h2>Sport : {{ entity.name }}</h2>
+        </header>
+        <div class="widget-row">
+            <dl>
+                <dt>Nombre de joueurs minimum :</dt>
+                <dd>{{ entity.nbPlayersMin }}</dd>
+                <dt>Nombre de joueurs maximum :</dt>
+                <dd>{{ entity.nbPlayersMax }}</dd>
+            </dl>
+        </div>
+        <div class="widget-row clearfix">
+            <ul class="list-inline">
+                <li>
+                    <a href="{{ path('sport_edit', { 'id': entity.id }) }}">
+                        <span class="btn btn-default">
+                            Editer <span class="glyphicon glyphicon-edit"></span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    {{ form(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </section>
 {% endblock %}

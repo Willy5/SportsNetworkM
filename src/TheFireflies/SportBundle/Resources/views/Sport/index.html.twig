@@ -4,20 +4,18 @@
 {% block body -%}
     <section class="widget">
         <header class="widget-header">
-            <h5>Sports <span class="text-info">(joueurs Min/joueurs Max)</span></h5>
+            <h2>Sports <small>(joueurs Min/joueurs Max)</small></h2>
         </header>
         {% for entity in entities %}
             <div class="widget-row hoverable clearfix">
                 <p class="pull-left last-child">
-                    <a href="{{ path('sport_show', { 'id': entity.id }) }}">
-                        {{ entity.name }}
-                    </a>
+                    <a href="{{ path('sport_show', { 'id': entity.id }) }}">{{ entity.name }}</a>
                     <span class="text-info">
                         ({{ entity.nbPlayersMin }}/{{ entity.nbPlayersMax }})
                     </span>
                         
                 </p>
-                <p class="clear-fix pull-right" >
+                <p class="pull-right" >
                     <a href="{{ path('sport_edit', { 'id': entity.id }) }}">
 	                    <span class="btn btn-default btn-xs">
 	                        Editer <span class="glyphicon glyphicon-edit"></span>

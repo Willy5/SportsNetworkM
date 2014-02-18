@@ -1,16 +1,17 @@
 {% extends '::base.html.twig' %}
 
+{% block topbody %}
+    <h1>Modifier un sport</h1>
+    <p><a href="{{ path('sport') }}">Revenir à la liste des sports</a></p>
+{% endblock %}
+
 {% block body -%}
-    <h1>Sport edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('sport') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <section class="widget">
+        <div class="widget-row">
+            {{ form(edit_form) }}
+        </div>
+        <div class="widget-row">
+            {{ form(delete_form) }}
+        </div>
+    </section>
 {% endblock %}
