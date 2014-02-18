@@ -56,8 +56,16 @@
             </div>
         </div>
     </header>
-
-    {% block body %}{% endblock %}
+    
+    <div class="top-container">
+        <div class="container">
+            {% block topbody %}{% endblock %}
+        </div>
+    </div>
+    
+    <div class="container main-container">
+        {% block body %}{% endblock %}
+    </div>
 
 
     <!-- Bootstrap core JavaScript

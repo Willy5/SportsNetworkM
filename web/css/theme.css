@@ -412,7 +412,8 @@ body {
 .widget-row *:first-child {
   margin-top: 0;
 }
-.widget-row *:last-child {
+.widget-row *:last-child,
+.last-child {
   margin-bottom: 0;
 }
 .widget-case {
