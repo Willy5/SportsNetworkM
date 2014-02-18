@@ -13,22 +13,32 @@ use Doctrine\ORM\Mapping as ORM;
 class FriendlyEvent extends Event
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="nametest", type="string", length=255)
      */
-    private $id;
-
+    private $nametest;
 
     /**
-     * Get id
+     * Set nametest
      *
-     * @return integer 
+     * @param string $nametest
+     * @return FriendlyEvent
      */
-    public function getId()
+    public function setNametest($nametest)
     {
-        return $this->id;
+        $this->nametest = $nametest;
+
+        return $this;
+    }
+
+    /**
+     * Get nametest
+     *
+     * @return string 
+     */
+    public function getNametest()
+    {
+        return $this->nametest;
     }
 }

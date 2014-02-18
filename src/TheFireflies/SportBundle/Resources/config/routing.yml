@@ -10,6 +10,14 @@ TheFirefliesSportBundle_team:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/team.yml"
     prefix:   /team
 
+TheFirefliesSportBundle_event:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/event.yml"
+    prefix:   /event
+
+TheFirefliesSportBundle_friendlyevent:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/friendlyevent.yml"
+    prefix:   /friendlyevent
+
 home:
     pattern:  /
     defaults: { _controller: "TheFirefliesSportBundle:Home:index" }

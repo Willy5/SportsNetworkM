@@ -1,0 +1,12 @@
+event:
+    pattern:  /
+    defaults: { _controller: "TheFirefliesSportBundle:Event:index" }
+
+event_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TheFirefliesSportBundle:Event:show" }
+
+event_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TheFirefliesSportBundle:Event:delete" }
+    requirements: { _method: post|delete }
