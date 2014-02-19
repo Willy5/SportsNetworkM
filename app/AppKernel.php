@@ -22,11 +22,16 @@ class AppKernel extends Kernel
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            
+            // SonataMediaBundle Bundle généré
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             
             // External Bundles
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
             
             // The Fireflies Bundles
             new TheFireflies\SportBundle\TheFirefliesSportBundle(),
