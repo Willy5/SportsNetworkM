@@ -1,0 +1,11 @@
+services:
+    sonata.admin.sport:
+        class: TheFireflies\SportBundle\Admin\SportAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Sport" }
+        arguments:
+            - ~
+            - TheFireflies\SportBundle\Entity\Sport
+            - ~
+        calls:
+            - [ setTranslationDomain, [TheFirefliesSportBundle]]
