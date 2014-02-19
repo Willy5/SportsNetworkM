@@ -1,6 +1,7 @@
 package com.sportsnetworkm;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -38,7 +39,7 @@ public class DBAdapter {
 		Context context;
 						
 		public DatabaseHelper(Context context) {
-			super(context, "navibc.db", null, 1);
+			super(context, "spnt.db", null, 1);
 			this.context = context;
 		}
 		
@@ -56,8 +57,7 @@ public class DBAdapter {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			// TODO Auto-generated method stub
-			
+			db.execSQL(db_sport);
 		}
 
 		@Override
@@ -79,8 +79,6 @@ public class DBAdapter {
 	public void close() {
 		db.close();
 	}
-	
-}
 
 //-----------------------------SUPPRESSION-------------------------------
 
@@ -88,5 +86,15 @@ public class DBAdapter {
 
 //-----------------------------RECUPERERATION----------------------------
 
+	public Cursor recupererSport(){
+		return db.query("sport", new String[]{
+				"_id",
+				"name",
+				"nbPlayersMin",
+				"nbPlayersMax"
+		}, null, null, null, null, null);
+	}
+
 //-----------------------------MODIFICATION------------------------------
 
+}
