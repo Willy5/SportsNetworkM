@@ -5,6 +5,7 @@ namespace TheFireflies\SportBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Routing\ClassResourceInterface;
 
 use TheFireflies\SportBundle\Entity\Sport;
 use TheFireflies\SportBundle\Form\SportType;
@@ -13,7 +14,7 @@ use TheFireflies\SportBundle\Form\SportType;
  * Sport controller.
  *
  */
-class SportController extends Controller
+class SportController extends Controller implements ClassResourceInterface
 {
 
     /**
@@ -242,7 +243,7 @@ class SportController extends Controller
         );
     }
 
-    /**
+    /*
      * Get action
      * @var integer $id Id of the entity
      * @return array
