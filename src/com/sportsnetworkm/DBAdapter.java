@@ -1,5 +1,6 @@
 package com.sportsnetworkm;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -83,6 +84,15 @@ public class DBAdapter {
 //-----------------------------SUPPRESSION-------------------------------
 
 //-----------------------------INSERTION---------------------------------
+	
+	public long insererSport (int _id, String name, int nbPlayersMin, int nbPlayersMax) {
+		ContentValues values = new ContentValues();
+		values.put("_id", _id);
+		values.put("name", name);
+		values.put("nbPlayersMin", nbPlayersMin);
+		values.put("nbPlayersMax", nbPlayersMax);
+		return db.insert("sport", null, values);
+	}
 
 //-----------------------------RECUPERERATION----------------------------
 

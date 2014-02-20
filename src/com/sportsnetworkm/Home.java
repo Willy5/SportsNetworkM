@@ -40,9 +40,25 @@ public class Home extends Activity{
         db.open();
         
         listeSports = ((Spinner)this.findViewById(R.id.listeSports));
+        
+        getServerDataSports();
+        Integer[] ValueSportId = returnedValueSportId.toArray(new Integer[returnedValueSportId.size()]);  
+		String[] ValueSportName = returnedValueSportName.toArray(new String[returnedValueSportName.size()]); 
+        Integer[] ValueSportNbPlayersMin = returnedValueSportNbPlayersMin.toArray(new Integer[returnedValueSportNbPlayersMin.size()]);  
+        Integer[] ValueSportNbPlayersMax = returnedValueSportNbPlayersMax.toArray(new Integer[returnedValueSportNbPlayersMax.size()]);  
+        int x = 0;
+		while(x < ValueSportId.length)
+    	{
+    		db.insererSport(ValueSportId[x], ValueSportName[x], ValueSportNbPlayersMin[x], ValueSportNbPlayersMax[x]);
+    		LogPerso.Logd("name : ", ValueSportName[x]);
+    		x++;
+    	}
+		
+		
+        
 	}
 	
-	public static final String strURL = "http://www.sportsnetwork.pcgena.fr/blabla/truc.json";
+	public static final String strURL = "http://sportsnetwork.pcgena.fr/web/app_dev.php/api/sports.json";
 	
 	private void getServerDataSports() {
 		InputStream is = null;
@@ -90,8 +106,8 @@ public class Home extends Activity{
 				//returnString += jArray.getJSONObject(i)+"\n";
 				returnedValueSportId.add(json_data.getInt("id"));
 				returnedValueSportName.add(json_data.getString("name"));
-				returnedValueSportNbPlayersMin.add(json_data.getInt("nbPlayersMin"));
-				returnedValueSportNbPlayersMax.add(json_data.getInt("nbPlayersMax"));
+				returnedValueSportNbPlayersMin.add(json_data.getInt("nb_players_min"));
+				returnedValueSportNbPlayersMax.add(json_data.getInt("nb_players_max"));
 			}
 		}
 		catch(JSONException e)
