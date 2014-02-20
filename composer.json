@@ -22,9 +22,11 @@
 		"sensio/generator-bundle" : "~2.3",
 		"incenteev/composer-parameter-handler" : "~2.0",
 		"friendsofsymfony/user-bundle" : "~2.0@dev",
-		"sonata-project/admin-bundle": "dev-master",
-		"sonata-project/doctrine-orm-admin-bundle": "dev-master",
-		"sonata-project/media-bundle": "dev-master"
+		"sonata-project/admin-bundle" : "dev-master",
+		"sonata-project/doctrine-orm-admin-bundle" : "dev-master",
+		"sonata-project/media-bundle" : "dev-master",
+		"jms/serializer-bundle" : "dev-master",
+		"friendsofsymfony/rest-bundle" : "1.1.*"
 	},
 	"scripts" : {
 		"post-install-cmd" : [

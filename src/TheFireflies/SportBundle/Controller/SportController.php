@@ -4,6 +4,7 @@ namespace TheFireflies\SportBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 use TheFireflies\SportBundle\Entity\Sport;
 use TheFireflies\SportBundle\Form\SportType;
@@ -219,5 +220,47 @@ class SportController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    
+    // REST
+
+    /**
+     * Collection get action
+     * @var Request $request
+     * @return array
+     *
+     * @Rest\View()
+     */
+    public function cgetAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+    
+        $entities = $em->getRepository('TheFirefliesSportBundle:Sport')->findAll();
+    
+        return array(
+            'sports' => $entities,
+        );
+    }
+
+    /**
+     * Get action
+     * @var integer $id Id of the entity
+     * @return array
+     *
+     * @Rest\View()
+     */
+    public function getAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('TheFirefliesSportBundle:Sport')->find($id);
+        
+        if (!$entity) {
+            throw new NotFoundHttpException('Sport not found');
+        }
+    
+        return array(
+            'entity' => $entity,
+        );
     }
 }

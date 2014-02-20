@@ -1,0 +1,6 @@
+# Rest Routing
+TheFirefliesSportBundle_sport_rest:
+    type:         rest
+    prefix:       /sport
+    resource:     TheFireflies\SportBundle\Controller\SportController
+    name_prefix:  api_sport_

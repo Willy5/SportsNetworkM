@@ -1,3 +1,4 @@
+# Imports
 TheFirefliesSportBundle_sport:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/sport.yml"
     prefix:   /sport
@@ -23,6 +24,7 @@ TheFirefliesSportBundle_instanceteam:
         resource: "@TheFirefliesSportBundle/Resources/config/routing/instanceteam.yml"
         prefix:   /instanceteam
 
+# Home
 home:
     pattern:  /
     defaults: { _controller: "TheFirefliesSportBundle:Home:index" }

@@ -46,3 +46,8 @@ the_fireflies_sport:
     resource: "@TheFirefliesSportBundle/Resources/config/routing.yml"
     prefix:   /
 
+# The Fireflies Rest Routing
+the_fireflies_sport_rest:
+    type:         rest
+    prefix:       /api
+    resource:     "@TheFirefliesSportBundle/Resources/config/routing_rest.yml"

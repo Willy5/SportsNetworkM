@@ -186,3 +186,17 @@ sonata_media:
     providers:
         image:
             resizer: sonata.media.resizer.simple # Default value : sonata.media.resizer.simple
+
+# FosRestBundle Configuration
+sensio_framework_extra:
+    view:
+        annotations: false
+    
+fos_rest:
+    routing_loader:
+        default_format: ~ # Default : ~ (Autre possibilites : json, xml..)
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
