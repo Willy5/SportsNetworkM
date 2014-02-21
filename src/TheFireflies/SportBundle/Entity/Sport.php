@@ -4,6 +4,8 @@ namespace TheFireflies\SportBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\ExecutionContextInterface;
@@ -11,8 +13,11 @@ use Symfony\Component\Validator\ExecutionContextInterface;
 /**
  * Sport
  * 
+ * @ExclusionPolicy("all")
+ * 
  * @UniqueEntity("name")
  * @Assert\Callback(methods={"isSportValid"})
+ * 
  * @ORM\Table(name="sport")
  * @ORM\Entity(repositoryClass="SportRepository")
  */
@@ -20,6 +25,8 @@ class Sport
 {
     /**
      * @var integer
+     * 
+     * @Expose
      * 
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -29,6 +36,8 @@ class Sport
 
     /**
      * @var string
+     * 
+     * @Expose
      * 
      * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255, unique=true, nullable=false)

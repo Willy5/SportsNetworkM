@@ -2,8 +2,10 @@
 
 namespace TheFireflies\SportBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
@@ -261,7 +263,7 @@ class SportController extends Controller implements ClassResourceInterface
         }
     
         return array(
-            'entity' => $entity,
+            'sport' => $entity,
         );
     }
 }

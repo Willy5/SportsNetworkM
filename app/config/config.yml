@@ -191,6 +191,8 @@ sonata_media:
 sensio_framework_extra:
     view:
         annotations: false
+    router:
+        annotations: true # Default : ?
     
 fos_rest:
     routing_loader:
