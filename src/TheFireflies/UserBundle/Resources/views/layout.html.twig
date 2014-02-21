@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block topbody %}<h1>Utilisateurs</h1>{% endblock %}
+{% block body -%}
+    <section class="widget">
+        <div class="widget-row">
+            {{ block('fos_user_content') }}
+        </div>
+        {#<div class="widget-row">
+            <p>Vous n'avez pas encore de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
+        </div>#}
+    </section>
+{% endblock %}
