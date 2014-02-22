@@ -202,3 +202,16 @@ fos_rest:
     format_listener: true
     view:
         view_response_listener: 'force'
+
+# Stof Doctrine Extensions Configuration
+stof_doctrine_extensions:
+    default_locale: fr
+    translation_fallback: true
+    orm:
+        default:
+            translatable: false
+            sluggable: true
+            loggable: true
+            tree: false
+            blameable: true
+            timestampable: true

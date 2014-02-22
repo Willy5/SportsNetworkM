@@ -91,17 +91,17 @@ class ClubController extends Controller
      * Finds and displays a Club entity.
      *
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TheFirefliesSportBundle:Club')->find($id);
+        $entity = $em->getRepository('TheFirefliesSportBundle:Club')->findOneBy(array('slug' => $slug));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Club entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity->getId());
 
         return $this->render('TheFirefliesSportBundle:Club:show.html.twig', array(
             'entity'      => $entity,
@@ -112,18 +112,18 @@ class ClubController extends Controller
      * Displays a form to edit an existing Club entity.
      *
      */
-    public function editAction($id)
+    public function editAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TheFirefliesSportBundle:Club')->find($id);
+        $entity = $em->getRepository('TheFirefliesSportBundle:Club')->findOneBy(array('slug' => $slug));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Club entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity->getId());
 
         return $this->render('TheFirefliesSportBundle:Club:edit.html.twig', array(
             'entity'      => $entity,
@@ -171,7 +171,7 @@ class ClubController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('club_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('club_edit', array('slug' => $entity->getSlug())));
         }
 
         return $this->render('TheFirefliesSportBundle:Club:edit.html.twig', array(

@@ -3,7 +3,7 @@ club:
     defaults: { _controller: "TheFirefliesSportBundle:Club:index" }
 
 club_show:
-    pattern:  /{id}/show
+    pattern:  /{slug}/show
     defaults: { _controller: "TheFirefliesSportBundle:Club:show" }
 
 club_new:
@@ -16,7 +16,7 @@ club_create:
     requirements: { _method: post }
 
 club_edit:
-    pattern:  /{id}/edit
+    pattern:  /{slug}/edit
     defaults: { _controller: "TheFirefliesSportBundle:Club:edit" }
 
 club_update:
