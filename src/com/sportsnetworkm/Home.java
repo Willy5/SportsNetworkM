@@ -9,8 +9,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class Home extends Activity{
@@ -54,11 +55,13 @@ public class Home extends Activity{
     		x++;
     	}
 		
-		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ValueSportName);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listeSports.setAdapter(adapter);
         
 	}
 	
-	public static final String strURL = "http://sportsnetwork.pcgena.fr/web/app_dev.php/api/sports.json";
+	public static String strURL = "http://sportsnetwork.pcgena.fr/web/app_dev.php/api/sports.json";
 	
 	private void getServerDataSports() {
 		InputStream is = null;
@@ -71,8 +74,9 @@ public class Home extends Activity{
 		try 
 		{
 			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httpget = new HttpPost(strURL);
-			httpget.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			String paramString = URLEncodedUtils.format(nameValuePairs, "utf-8");
+			strURL += "?" + paramString;
+			HttpGet  httpget = new HttpGet (strURL);
 			HttpResponse response = httpclient.execute(httpget);
 			HttpEntity entity = response.getEntity();
 			is = entity.getContent();
@@ -99,7 +103,9 @@ public class Home extends Activity{
 		// AFFICHAGE RESULTAT
 		try
 		{
-			JSONArray jArray = new JSONArray(result);
+			JSONObject jsonObj = new JSONObject(result);
+			JSONArray jArray = jsonObj.getJSONArray("sports");
+			//JSONArray jArray = new JSONArray(result);
 			for(int i=0;i<jArray.length();i++){
 				JSONObject json_data = jArray.getJSONObject(i);
 				// Résultats de la requête : json_data.getInt("ID_ville")
