@@ -47,6 +47,8 @@ class Sport
     /**
      * @var integer
      * 
+     * @Expose
+     * 
      * @Assert\Range(
      *      min = "1",
      *      minMessage = "Un minimum de un joueur est requis.",
@@ -58,6 +60,8 @@ class Sport
 
     /**
      * @var integer
+     * 
+     * @Expose
      * 
      * @Assert\Range(
      *      min = "1",
