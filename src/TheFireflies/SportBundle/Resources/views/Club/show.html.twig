@@ -1,36 +1,28 @@
 {% extends '::base.html.twig' %}
 
+{% block topbody %}
+    <h1>Page du club {{ entity.name }}</h1>
+{% endblock %}
+
 {% block body -%}
-    <h1>Club</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Website</th>
-                <td>{{ entity.website }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('club') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('club_edit', { 'slug': entity.slug }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <section class="widget">
+        <header class="widget-header">
+            <p class="h5">Club</p>
+            <h2>{{ entity.name }}</h2>
+        </header>
+        <div class="widget-row">
+            <dl>
+                {% if entity.createdBy is not empty %}
+                    <dt>Membre créateur :</dt>
+                    <dd>
+                        {{ entity.createdBy.username }}
+                    </dd>
+                {% endif %}
+                {% if entity.website is not empty %}
+                    <dt>Site internet :</dt>
+                    <dd>{{ entity.website }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+    </section>
 {% endblock %}
