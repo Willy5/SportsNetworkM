@@ -30,7 +30,7 @@ public class Home extends Activity implements OnClickListener{
 		switch(v.getId())
 		{
 			case R.id.layoutFont:
-				Intent intent = new Intent(this, Homenext.class);
+				Intent intent = new Intent(this, TabMenu.class);
 				this.startActivity(intent);
 				this.finish();
 		}
