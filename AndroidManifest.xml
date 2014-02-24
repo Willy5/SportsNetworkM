@@ -14,11 +14,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="SportsNetwork" >
+        android:icon="@drawable/logo"
+        android:label="Sports Network" >
 
         <activity
-            android:label="SportsNetwork"
+            android:label="Sports Network"
             android:name=".Home"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait" >
