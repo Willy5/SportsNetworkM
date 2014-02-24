@@ -4,6 +4,7 @@ namespace TheFireflies\SportBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use TheFireflies\SportBundle\Entity\Club;
 use TheFireflies\SportBundle\Form\ClubType;
@@ -31,7 +32,8 @@ class ClubController extends Controller
     }
     /**
      * Creates a new Club entity.
-     *
+     * 
+     * @Security("has_role('ROLE_USER')")
      */
     public function createAction(Request $request)
     {
@@ -75,6 +77,7 @@ class ClubController extends Controller
     /**
      * Displays a form to create a new Club entity.
      *
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction()
     {
