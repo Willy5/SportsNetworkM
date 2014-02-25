@@ -5,6 +5,7 @@ namespace TheFireflies\SportBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\True;
 
 class PlayerDetailType extends AbstractType
 {
@@ -15,9 +16,14 @@ class PlayerDetailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('public', 'checkbox', array(
+                'label' => 'Création de votre fiche joueur ?',
+                'required' => false,
+                "mapped" => false
+        ))
+            ->add('nameIfGuest')
             ->add('playerNumber')
             ->add('position')
-            ->add('nameIfGuest')
         ;
     }
     

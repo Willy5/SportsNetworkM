@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block body %}
     <h1>PlayerDetail creation</h1>
 
     {{ form(form) }}
@@ -12,4 +12,10 @@
         </a>
     </li>
 </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@TheFirefliesSportBundle/Resources/public/js/PlayerDetail/form.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
