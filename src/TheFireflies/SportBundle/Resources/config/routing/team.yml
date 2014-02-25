@@ -28,3 +28,7 @@ team_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TheFirefliesSportBundle:Team:delete" }
     requirements: { _method: post|delete }
+
+instanceteam_new:
+    pattern:  /{teamId}/new-instance-team
+    defaults: { _controller: "TheFirefliesSportBundle:InstanceTeam:new" }

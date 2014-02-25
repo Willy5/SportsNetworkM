@@ -11,6 +11,7 @@
             Back to the list
         </a>
     </li>
+    <li><a href="{{ path('instanceteam_new', { 'teamId': entity.id })   }}">Créer une instance d'équipe</a></li>
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}

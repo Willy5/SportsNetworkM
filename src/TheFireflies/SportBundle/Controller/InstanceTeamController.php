@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use TheFireflies\SportBundle\Entity\InstanceTeam;
+use TheFireflies\SportBundle\Entity\Team;
 use TheFireflies\SportBundle\Form\InstanceTeamType;
 
 /**
@@ -33,10 +34,19 @@ class InstanceTeamController extends Controller
      * Creates a new InstanceTeam entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction($teamId, Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $team = $em->getRepository('TheFirefliesSportBundle:Team')->find($teamId);
+        
+        if (!$team) {
+            throw $this->createNotFoundException('Unable to find Team entity.');
+        }
+        
         $entity = new InstanceTeam();
-        $form = $this->createCreateForm($entity);
+        $entity->setTeam($team);
+        $form = $this->createCreateForm($entity, $team);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -60,10 +70,10 @@ class InstanceTeamController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(InstanceTeam $entity)
+    private function createCreateForm(InstanceTeam $entity, Team $team)
     {
         $form = $this->createForm(new InstanceTeamType(), $entity, array(
-            'action' => $this->generateUrl('instanceteam_create'),
+            'action' => $this->generateUrl('instanceteam_create', array('teamId' => $team->getId())),
             'method' => 'POST',
         ));
 
@@ -76,10 +86,19 @@ class InstanceTeamController extends Controller
      * Displays a form to create a new InstanceTeam entity.
      *
      */
-    public function newAction()
+    public function newAction($teamId)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $team = $em->getRepository('TheFirefliesSportBundle:Team')->find($teamId);
+        
+        if (!$team) {
+            throw $this->createNotFoundException('Unable to find Team entity.');
+        }
+        
         $entity = new InstanceTeam();
-        $form   = $this->createCreateForm($entity);
+
+        $form   = $this->createCreateForm($entity, $team);
 
         return $this->render('TheFirefliesSportBundle:InstanceTeam:new.html.twig', array(
             'entity' => $entity,

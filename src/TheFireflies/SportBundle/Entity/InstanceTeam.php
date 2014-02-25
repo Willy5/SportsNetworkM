@@ -4,10 +4,14 @@ namespace TheFireflies\SportBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * InstanceTeam
  *
+ * @Assert\Callback(methods={"isInstanceTeamValid"})
+ * 
  * @ORM\Table()
  * @ORM\Entity
  */
@@ -41,15 +45,17 @@ class InstanceTeam
     private $playersDetail;
 
     /**
-     * @var \DateTime
-     *
+     * @var \Date
+     * 
      * @ORM\Column(name="beginDate", type="date", nullable=false)
      */
     private $beginDate;
 
     /**
-     * @var \DateTime
-     *
+     * @var \Date
+     * 
+     * @Assert\GreaterThanOrEqual({"$beginDate"})
+     * 
      * @ORM\Column(name="endDate", type="date", nullable=true)
      */
     private $endDate;
@@ -61,6 +67,23 @@ class InstanceTeam
     public function __construct()
     {
         $this->playersDetail = new ArrayCollection();
+    }
+
+    /**
+     * Validation constraint
+     */
+    public function isInstanceTeamValid(ExecutionContextInterface $context)
+    {
+        $beginDate = $this->getBeginDate();
+        $endDate = $this->getEndDate();
+        if(! empty($endDate))
+        {
+            if($endDate < $beginDate)
+            {
+                $context->addViolationAt('endDate', 'La date de fin ne peut pas être inférieure à la date de début', array(), null);
+            }
+            
+        }
     }
 
 
@@ -80,7 +103,7 @@ class InstanceTeam
      * @param Team $team
      * @return InstanceTeam
      */
-    public function setTeam(Team $team = null)
+    public function setTeam(Team $team)
     {
         $this->team = $team;
         

@@ -21,8 +21,8 @@ TheFirefliesSportBundle_friendlyevent:
 
 
 TheFirefliesSportBundle_instanceteam:
-        resource: "@TheFirefliesSportBundle/Resources/config/routing/instanceteam.yml"
-        prefix:   /instanceteam
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/instanceteam.yml"
+    prefix:   /instanceteam
 
 # Home
 home:

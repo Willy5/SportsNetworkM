@@ -6,12 +6,8 @@ instanceteam_show:
     pattern:  /{id}/show
     defaults: { _controller: "TheFirefliesSportBundle:InstanceTeam:show" }
 
-instanceteam_new:
-    pattern:  /new
-    defaults: { _controller: "TheFirefliesSportBundle:InstanceTeam:new" }
-
 instanceteam_create:
-    pattern:  /create
+    pattern:  /create/{teamId}/new-instance-team
     defaults: { _controller: "TheFirefliesSportBundle:InstanceTeam:create" }
     requirements: { _method: post }
 

@@ -17,13 +17,6 @@ class InstanceTeamType extends AbstractType
         $builder
             ->add('beginDate')
             ->add('endDate')
-            ->add('team', 'entity', array(
-                'label' => 'team',
-                'class' => 'TheFirefliesSportBundle:Team',
-                'required' => true ,
-                'multiple' => false,
-                'property' => 'name'
-        ))
         ;
     }
     
