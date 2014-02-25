@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>PlayerDetail list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Playernumber</th>
+                <th>Position</th>
+                <th>Nameifguest</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('playerdetail_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.playerNumber }}</td>
+                <td>{{ entity.position }}</td>
+                <td>{{ entity.nameIfGuest }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('playerdetail_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('playerdetail_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

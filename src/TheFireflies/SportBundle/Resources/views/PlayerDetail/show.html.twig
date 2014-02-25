@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>InstanceTeam</h1>
+    <h1>PlayerDetail</h1>
 
     <table class="record_properties">
         <tbody>
@@ -10,28 +10,31 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Begindate</th>
-                <td>{{ entity.beginDate|date('Y-m-d H:i:s') }}</td>
+                <th>Playernumber</th>
+                <td>{{ entity.playerNumber }}</td>
             </tr>
             <tr>
-                <th>Enddate</th>
-                <td>{{ entity.endDate|date('Y-m-d H:i:s') }}</td>
+                <th>Position</th>
+                <td>{{ entity.position }}</td>
+            </tr>
+            <tr>
+                <th>Nameifguest</th>
+                <td>{{ entity.nameIfGuest }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('instanceteam') }}">
+        <a href="{{ path('playerdetail') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('instanceteam_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('playerdetail_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
-    <li><a href="{{ path('playerdetail_new', { 'instanceTeamId': entity.id })   }}">Ajoutez-vous à l'équipe en créant une fiche joueur</a></li>
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}

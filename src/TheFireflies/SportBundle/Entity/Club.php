@@ -51,7 +51,7 @@ class Club
 
     /**
      *
-     * @var string $createdBy
+     * @var TheFireflies\UserBundle\Entity\User $createdBy
      * 
      * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="TheFireflies\UserBundle\Entity\User")
@@ -60,7 +60,7 @@ class Club
 
     /**
      *
-     * @var string $updatedBy
+     * @var TheFireflies\UserBundle\Entity\User $updatedBy
      * 
      * @Gedmo\Blameable(on="update")
      * @ORM\ManyToOne(targetEntity="TheFireflies\UserBundle\Entity\User")

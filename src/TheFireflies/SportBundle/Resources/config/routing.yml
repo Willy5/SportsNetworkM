@@ -19,10 +19,13 @@ TheFirefliesSportBundle_friendlyevent:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/friendlyevent.yml"
     prefix:   /friendlyevent
 
-
 TheFirefliesSportBundle_instanceteam:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/instanceteam.yml"
     prefix:   /instanceteam
+
+TheFirefliesSportBundle_playerdetail:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/playerdetail.yml"
+    prefix:   /playerdetail
 
 # Home
 home:
