@@ -1,11 +1,12 @@
-$(function() {
-    if($('#thefireflies_sportbundle_playerdetail_public').is(':checked'))
-    {
-        $('#thefireflies_sportbundle_playerdetail_nameIfGuest').hide();
+$('#thefireflies_sportbundle_playerdetail_public').click(function() {
+    var $this = $(this);
+    // $this will contain a reference to the checkbox   
+    if ($this.is(':checked')) {
+        $('.for-guest').hide(500);
+    } else {
+        $('.for-guest').show(500);
     }
-    else
-    {
-    	$('#thefireflies_sportbundle_playerdetail_nameIfGuest').show();
-    }
-    
+});
+$( document ).ready(function() {
+    $('.pre-hidden').show();
 });

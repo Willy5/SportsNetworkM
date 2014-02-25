@@ -19,7 +19,8 @@ class PlayerDetailType extends AbstractType
             ->add('public', 'checkbox', array(
                 'label' => 'Création de votre fiche joueur ?',
                 'required' => false,
-                "mapped" => false
+                'mapped' => false,
+                'data' => true
         ))
             ->add('nameIfGuest')
             ->add('playerNumber')
