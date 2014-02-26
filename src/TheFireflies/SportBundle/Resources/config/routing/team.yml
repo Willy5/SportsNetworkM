@@ -3,7 +3,7 @@ team:
     defaults: { _controller: "TheFirefliesSportBundle:Team:index" }
 
 team_show:
-    pattern:  /{id}/show
+    pattern:  /{slug}/show
     defaults: { _controller: "TheFirefliesSportBundle:Team:show" }
 
 team_new:
@@ -16,7 +16,7 @@ team_create:
     requirements: { _method: post }
 
 team_edit:
-    pattern:  /{id}/edit
+    pattern:  /{slug}/edit
     defaults: { _controller: "TheFirefliesSportBundle:Team:edit" }
 
 team_update:

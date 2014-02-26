@@ -44,7 +44,7 @@ class TeamController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('team_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('team_show', array('slug' => $entity->getSlug())));
         }
 
         return $this->render('TheFirefliesSportBundle:Team:new.html.twig', array(
@@ -91,17 +91,17 @@ class TeamController extends Controller
      * Finds and displays a Team entity.
      *
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TheFirefliesSportBundle:Team')->find($id);
+        $entity = $em->getRepository('TheFirefliesSportBundle:Team')->findOneBySlug($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Team entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity->getId());
 
         return $this->render('TheFirefliesSportBundle:Team:show.html.twig', array(
             'entity'      => $entity,
@@ -112,18 +112,18 @@ class TeamController extends Controller
      * Displays a form to edit an existing Team entity.
      *
      */
-    public function editAction($id)
+    public function editAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TheFirefliesSportBundle:Team')->find($id);
+        $entity = $em->getRepository('TheFirefliesSportBundle:Team')->findOneBySlug($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Team entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity->getId());
 
         return $this->render('TheFirefliesSportBundle:Team:edit.html.twig', array(
             'entity'      => $entity,
@@ -171,7 +171,7 @@ class TeamController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('team_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('team_edit', array('slug' => $entity->getSlug())));
         }
 
         return $this->render('TheFirefliesSportBundle:Team:edit.html.twig', array(

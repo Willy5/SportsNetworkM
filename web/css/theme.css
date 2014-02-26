@@ -348,6 +348,10 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffe0e0e0', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border-bottom: 2px solid #cccccc;
+  padding-top: 20px;
+}
+.top-container *:first-child {
+  margin-top: 0;
 }
 .main-container {
   margin-top: 40px;

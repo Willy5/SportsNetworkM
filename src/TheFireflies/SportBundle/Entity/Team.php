@@ -40,7 +40,7 @@ class Team
      *                cascade={"persist", "remove"},
      *                orphanRemoval=true)
      */
-    private $instancesTeam;
+    private $teamInstances;
     
     /**
      * @var Event
@@ -56,6 +56,17 @@ class Team
      * @ORM\Column(name="name", type="string", length=255, unique=false, nullable=false)
      */
     private $name;
+
+    /**
+     * @var string
+     * 
+     * @Assert\Length(min = "2",
+     *                max = "5")
+     * 
+     * @Assert\NotBlank()
+     * @ORM\Column(name="matricule", type="string", length=5, unique=false, nullable=false)
+     */
+    private $matricule;
 
     /**
      *
@@ -90,6 +101,19 @@ class Team
         $this->instancesTeam = new ArrayCollection();
     }
 
+    /**
+     * Get fullName
+     *
+     * @return string 
+     */
+    public function getFullName()
+    {
+        $div = $this->getDivision();
+        if (empty($div))
+            return $this->getName();
+        return ($this->getName() . " (" . $div . ")");
+    }
+
 
     /**
      * Get id
@@ -122,29 +146,6 @@ class Team
     public function getClub()
     {
         return $this->club;
-    }
-    
-    /**
-     * Add instanceTeam
-     *
-     * @param InstanceTeam $instanceTeam
-     * @return Team
-     */
-    public function addInstanceTeam(InstanceTeam $instanceTeam)
-    {
-        $this->instancesTeam[] = $instanceTeam;
-    
-        return $this;
-    }
-
-    /**
-     * Remove instanceTeam
-     *
-     * @param InstanceTeam $instanceTeam
-     */
-    public function removeInstanceTeam(InstanceTeam $instanceTeam)
-    {
-        $this->instancesTeam->removeElement($instanceTeam);
     }
 
     /**
@@ -283,25 +284,58 @@ class Team
     }
 
     /**
-     * Add instancesTeam
+     * Set matricule
      *
-     * @param \TheFireflies\SportBundle\Entity\InstanceTeam $instancesTeam
+     * @param string $matricule
      * @return Team
      */
-    public function addInstancesTeam(\TheFireflies\SportBundle\Entity\InstanceTeam $instancesTeam)
+    public function setMatricule($matricule)
     {
-        $this->instancesTeam[] = $instancesTeam;
+        $this->matricule = strtoupper($matricule);
 
         return $this;
     }
 
     /**
-     * Remove instancesTeam
+     * Get matricule
      *
-     * @param \TheFireflies\SportBundle\Entity\InstanceTeam $instancesTeam
+     * @return string 
      */
-    public function removeInstancesTeam(\TheFireflies\SportBundle\Entity\InstanceTeam $instancesTeam)
+    public function getMatricule()
     {
-        $this->instancesTeam->removeElement($instancesTeam);
+        return $this->matricule;
+    }
+
+    /**
+     * Add teamInstances
+     *
+     * @param \TheFireflies\SportBundle\Entity\InstanceTeam $teamInstances
+     * @return Team
+     */
+    public function addTeamInstance(\TheFireflies\SportBundle\Entity\InstanceTeam $teamInstances)
+    {
+        $this->teamInstances[] = $teamInstances;
+
+        return $this;
+    }
+
+    /**
+     * Remove teamInstances
+     *
+     * @param \TheFireflies\SportBundle\Entity\InstanceTeam $teamInstances
+     */
+    public function removeTeamInstance(\TheFireflies\SportBundle\Entity\InstanceTeam $teamInstances)
+    {
+        $this->teamInstances->removeElement($teamInstances);
+    }
+
+    /**
+     * Get teamInstances
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamInstances()
+    {
+        return $this->teamInstances;
     }
 }

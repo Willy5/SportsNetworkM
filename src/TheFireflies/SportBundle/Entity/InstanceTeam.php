@@ -29,7 +29,7 @@ class InstanceTeam
     /**
      * @var Team
      * 
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="instancesTeam")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="teamInstances")
      * @ORM\JoinColumn(name="team_id", referencedColumnName="id", nullable=false)
      */
     private $team;

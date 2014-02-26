@@ -1,40 +1,66 @@
 {% extends '::base.html.twig' %}
 
+{% block topbody %}
+<div class="clearfix">
+    <div class="pull-left">
+        <h1><small>Page de l'équipe : </small><br />{{ entity.fullName }}</h1>
+        {% if entity.club is not empty %}
+            <p>Cette équipe appartient au club <a href="{{ path('club_show', { 'slug': entity.club.slug }) }}">{{ entity.club.name }}</a>.</p>
+        {% else %}
+            <p>Cette équipe n'est affiliée à aucun club.</p>
+        {% endif %}
+    </div>
+    <div class="pull-right">
+        <a href="{{ path('team_edit', { 'slug': entity.slug }) }}">
+            <span class="btn btn-default">Editer <span class="glyphicon glyphicon-edit"></span></span>
+        </a>
+    </div>
+    
+</div>
+{% endblock %}
 {% block body -%}
-    <h1>Team</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Division</th>
-                <td>{{ entity.division }}</td>
-            </tr>
-            <tr>
-                <th>Website</th>
-                <td>{{ entity.website }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('team') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('team_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <section class="widget">
+        <header class="widget-header">
+            <p class="h5">Equipe : {{ entity.name }}</p>
+            <h2>Détails de l'équipe</h2>
+        </header>
+        <div class="widget-row">
+            <dl>
+                <dt>Matricule :</dt>
+                <dd>{{ entity.matricule }}</dd>
+                {% if entity.division is not empty %}
+                    <dt>Division :</dt>
+                    <dd>{{ entity.division }}</dd>
+                {% endif %}
+                {% if entity.website is not empty %}
+                    <dt>Site web :</dt>
+                    <dd><a href="{{ entity.website }}">{{ entity.website }}</a></dd>
+                {% endif %}
+            </dl>
+        </div>
+    </section>
+    
+    {% if entity.teamInstances is not empty %}
+        <section class="widget">
+            <header class="widget-header">
+                <h2>Compositions de l'équipe</h2>
+            </header>
+            <div class="container-fluid">
+            {% for teamInstance in entity.teamInstances %}
+                {% if loop.index is odd %}
+                    <div class="mid-row">
+                {% endif %}
+                
+                    <div class="mid-content">
+                        <div class="widget-case hoverable">
+                            <p>A partir du {{ teamInstance.beginDate|date("m/d/Y", "Europe/Paris") }}
+                        </div>
+                    </div>
+                {% if loop.index is even or loop.last %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </section>
+    {% endif %}
 {% endblock %}
