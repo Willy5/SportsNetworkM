@@ -24,19 +24,21 @@ class SportMatchType extends AbstractType
             'empty_value' => 'Choisissez un statut',
         ))
             ->add('homeTeam', 'entity', array(
-                'label' => 'Equipe receveuse',
+                'label' => 'Equipe à domicile',
                 'class' => 'TheFirefliesSportBundle:Team',
                 'required' => true,
                 'multiple' => false,
                 'property' => 'name'
         ))
             ->add('awayTeam', 'entity', array(
-                'label' => 'Equipe visiteuse',
+                'label' => 'Equipe à l\'extérieur',
                 'class' => 'TheFirefliesSportBundle:Team',
                 'required' => true,
                 'multiple' => false,
                 'property' => 'name'
         ))
+            ->add('scoreHomeTeam')
+            ->add('scoreAwayTeam')
         ;
     }
     

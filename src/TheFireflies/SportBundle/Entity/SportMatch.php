@@ -71,11 +71,33 @@ class SportMatch
      * @Assert\Range(
      *      min = "0",
      *      minMessage = "Le statut est de minimum zéro.",
-     *      max = "1",
-     *      maxMessage = "Le statut est de maximum 1.")
+     *      max = "3",
+     *      maxMessage = "Le statut est de maximum 3.")
      * @ORM\Column(name="status", type="integer", nullable=false)
      */
     private $status;
+
+    /**
+     * @var integer
+     * @Assert\Range(
+     *      min = "0",
+     *      minMessage = "Le score maximal est 0.",
+     *      max = "200",
+     *      maxMessage = "Le score maximal est 200.")
+     * @ORM\Column(name="scoreHomeTeam", type="integer", nullable=false)
+     */
+    private $scoreHomeTeam;
+
+    /**
+     * @var integer
+     * @Assert\Range(
+     *      min = "0",
+     *      minMessage = "Le score maximal est 0.",
+     *      max = "200",
+     *      maxMessage = "Le score maximal est 200.")
+     * @ORM\Column(name="scoreAwayTeam", type="integer", nullable=false)
+     */
+    private $scoreAwayTeam;
 
 
     /**
@@ -84,6 +106,8 @@ class SportMatch
     public function __construct()
     {
         $this->status = 0;
+        $this->scoreHomeTeam = 0;
+        $this->scoreAwayTeam = 0;
     }
     
     public function getStatusList()
@@ -91,6 +115,8 @@ class SportMatch
         $statusList = array();
         $statusList[0] = "Match non commencé";
         $statusList[1] = "Match terminé";
+        $statusList[2] = "Match forfait : L'équipe à domicile à déclarée forfait (L'équipe à l'extérieur gagne).";
+        $statusList[3] = "Match forfait : L'équipe à l'extérieur à déclarée forfait (L'équipe à domicile gagne).";
         
         return $statusList;
     }
@@ -103,7 +129,7 @@ class SportMatch
     {
         if($this->homeTeam->getId() == $this->awayTeam->getId())
         {
-            $context->addViolationAt('awayTeam', 'L\équipe visiteuse ne peut pas être la même que l\'équipe receveuse', array(), null);
+            $context->addViolationAt('awayTeam', 'L\'équipe visiteuse ne peut pas être la même que l\'équipe receveuse', array(), null);
         }
     }
 
@@ -253,5 +279,51 @@ class SportMatch
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set scoreHomeTeam
+     *
+     * @param integer $scoreHomeTeam
+     * @return SportMatch
+     */
+    public function setScoreHomeTeam($scoreHomeTeam)
+    {
+        $this->scoreHomeTeam = $scoreHomeTeam;
+
+        return $this;
+    }
+
+    /**
+     * Get scoreHomeTeam
+     *
+     * @return integer 
+     */
+    public function getScoreHomeTeam()
+    {
+        return $this->scoreHomeTeam;
+    }
+
+    /**
+     * Set scoreAwayTeam
+     *
+     * @param integer $scoreAwayTeam
+     * @return SportMatch
+     */
+    public function setScoreAwayTeam($scoreAwayTeam)
+    {
+        $this->scoreAwayTeam = $scoreAwayTeam;
+
+        return $this;
+    }
+
+    /**
+     * Get scoreAwayTeam
+     *
+     * @return integer 
+     */
+    public function getScoreAwayTeam()
+    {
+        return $this->scoreAwayTeam;
     }
 }
