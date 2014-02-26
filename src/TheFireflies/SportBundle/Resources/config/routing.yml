@@ -15,9 +15,9 @@ TheFirefliesSportBundle_event:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/event.yml"
     prefix:   /event
 
-TheFirefliesSportBundle_friendlyevent:
-    resource: "@TheFirefliesSportBundle/Resources/config/routing/friendlyevent.yml"
-    prefix:   /friendlyevent
+TheFirefliesSportBundle_friendlymatch:
+    resource: "@TheFirefliesSportBundle/Resources/config/routing/friendlymatch.yml"
+    prefix:   /friendlymatch
 
 TheFirefliesSportBundle_instanceteam:
     resource: "@TheFirefliesSportBundle/Resources/config/routing/instanceteam.yml"
