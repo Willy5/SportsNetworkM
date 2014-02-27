@@ -81,12 +81,12 @@ class InstanceTeam
         {
             if($endDate < $beginDate)
             {
-                
+                $context->addViolationAt('endDate', 'La date de fin ne peut pas être inférieure à la date de début', array(), null);
             }
             
         }
 
-        // On vérifie que la durée effective ne coupe pas 
+        // On vérifie que les durées de 2 instances ne se coupent pas 
         if(! empty($allTeamInstances))
         {
             foreach ($allTeamInstances as $teamInstance)
