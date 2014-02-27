@@ -76,13 +76,52 @@ class InstanceTeam
     {
         $beginDate = $this->getBeginDate();
         $endDate = $this->getEndDate();
+        $allTeamInstances = $this->getTeam()->getTeamInstances();
         if(! empty($endDate))
         {
             if($endDate < $beginDate)
             {
-                $context->addViolationAt('endDate', 'La date de fin ne peut pas être inférieure à la date de début', array(), null);
+                
             }
             
+        }
+
+        // On vérifie que la durée effective ne coupe pas 
+        if(! empty($allTeamInstances))
+        {
+            foreach ($allTeamInstances as $teamInstance)
+            {
+                $beginDateTeamInstance = $teamInstance->getBeginDate();
+                $endDateTeamInstance = $teamInstance->getEndDate();
+                if ($teamInstance->getId() != $this->getId()) // this getId marche ? A-t-on l'Id pour le moment ?
+                {
+                    if ($this->getEndDate() == null)
+                    {
+                        if($endDateTeamInstance == null)
+                        {
+                            $context->addViolationAt('beginDate', 'La durée de cette composition d\'équipe chevauche celle d\'une autre ! Cette composition d\'équipe, tout comme une autre, n\'a pas de date de fin. Or, seule la dernière composition d\'équipe peut ne pas avoir de date de fin. Veuillez d\'abord donner une date de fin à l\'autre composition.', array(), null);
+                        }
+                        else if ($endDateTeamInstance >= $this->getBeginDate())
+                        {
+                            $context->addViolationAt('beginDate', 'La durée de cette composition d\'équipe chevauche celle d\'une autre !', array(), null);
+                        }
+                    }
+                    else
+                    {
+                        if ($beginDateTeamInstance <= $this->getEndDate())
+                        {
+                            if($endDateTeamInstance == null)
+                            {
+                                $context->addViolationAt('beginDate', 'La durée de cette composition d\'équipe chevauche celle d\'une autre ! (Cette autre composition n\'a pas de date de fin, veuillez lui en assigner une d\'abord)', array(), null);
+                            }
+                            else if ($endDateTeamInstance >= $this->getBeginDate())
+                            {
+                                $context->addViolationAt('beginDate', 'La durée de cette composition d\'équipe chevauche celle d\'une autre !', array(), null);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
