@@ -45,22 +45,26 @@
             <header class="widget-header">
                 <h2>Compositions de l'équipe</h2>
             </header>
-            <div class="container-fluid">
+            <div class="widget-row"><ul class="list-inline">
             {% for teamInstance in entity.teamInstances %}
-                {% if loop.index is odd %}
-                    <div class="mid-row">
-                {% endif %}
-                
-                    <div class="mid-content">
-                        <div class="widget-case hoverable">
-                            <p>A partir du {{ teamInstance.beginDate|date("m/d/Y", "Europe/Paris") }}
+                <li>
+                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#tinstance-{{ teamInstance.id }}">{{ teamInstance.beginDate|date("m/d/Y", "Europe/Paris") }} <span class="glyphicon glyphicon-zoom-in"></span></button>
+                </li>
+                <div class="modal fade" id="tinstance-{{ teamInstance.id }}"  tabindex="-1" role="dialog" aria-labelledby="tinstance-label-{{ teamInstance.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="tinstance-label-{{ teamInstance.id }}" >Composition de l'équipe à partir du {{ teamInstance.beginDate|date("m/d/Y", "Europe/Paris") }}</h4>
+                            </div>
+                            <div class="modal-body">BIDULE</div>
+                            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button></div>
+                            
                         </div>
                     </div>
-                {% if loop.index is even or loop.last %}
-                    </div>
-                {% endif %}
+                </div>
             {% endfor %}
-            </div>
+            </ul></div>
         </section>
     {% endif %}
 {% endblock %}
