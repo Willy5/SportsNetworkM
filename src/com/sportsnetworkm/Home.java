@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
-public class Home extends Activity implements OnClickListener{
+public class Home extends Activity  implements OnClickListener{
 	
 	DBAdapter db;
 	LinearLayout layoutFont;
@@ -30,7 +30,7 @@ public class Home extends Activity implements OnClickListener{
 		switch(v.getId())
 		{
 			case R.id.layoutFont:
-				Intent intent = new Intent(this, TabMenu.class);
+				Intent intent = new Intent(this, TabLayoutActivity.class);
 				this.startActivity(intent);
 				this.finish();
 		}

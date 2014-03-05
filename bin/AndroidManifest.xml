@@ -6,7 +6,7 @@
 
     <uses-sdk 
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -15,7 +15,8 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="Sports Network" >
+        android:label="Sports Network"
+        android:theme="@android:style/Theme.NoTitleBar" >
 
         <activity
             android:label="Sports Network"
@@ -29,14 +30,25 @@
         </activity>
         <activity
             android:name=".Homenext"
-            android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".TabMenu"
-            android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".TabLayoutActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Tab1Activity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Tab2Activity"
+            android:screenOrientation="portrait">
+        </activity>
+        
         
     </application>
 
