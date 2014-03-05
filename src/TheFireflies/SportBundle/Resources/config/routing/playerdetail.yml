@@ -1,0 +1,26 @@
+playerdetail:
+    pattern:  /
+    defaults: { _controller: "TheFirefliesSportBundle:PlayerDetail:index" }
+
+playerdetail_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TheFirefliesSportBundle:PlayerDetail:show" }
+
+playerdetail_create:
+    pattern:  /create/{instanceTeamId}/new-player-detail
+    defaults: { _controller: "TheFirefliesSportBundle:PlayerDetail:create" }
+    requirements: { _method: post }
+
+playerdetail_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TheFirefliesSportBundle:PlayerDetail:edit" }
+
+playerdetail_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TheFirefliesSportBundle:PlayerDetail:update" }
+    requirements: { _method: post|put }
+
+playerdetail_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TheFirefliesSportBundle:PlayerDetail:delete" }
+    requirements: { _method: post|delete }

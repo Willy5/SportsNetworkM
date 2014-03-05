@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block topbody %}
+    <h1>Créer votre club</h1>
+{% endblock %}
+
+{% block body -%}
+    <section class="widget">
+        <div class="widget-row">
+            {{ form(form) }}
+        </div>
+    </section>
+{% endblock %}

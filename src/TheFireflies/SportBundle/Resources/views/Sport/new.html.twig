@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block topbody %}
+    <h1>Ajouter un sport</h1>
+    <p><a href="{{ path('sport') }}">Revenir à la liste des sports</a></p>
+{% endblock %}
+
+{% block body -%}
+    <section class="widget">
+        <div class="widget-row">
+            {{ form(form) }}
+        </div>
+    </section>
+{% endblock %}

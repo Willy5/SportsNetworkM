@@ -1,0 +1,47 @@
+//
+// Custom variables
+// --------------------------------------------------
+
+// Global
+@body-bg:						#ecedee;
+@body-padding-top:				@navbar-height;
+@logo-height:					40px;
+@logo-brand-top-margin:			(@navbar-height - @logo-height) / 2 ;
+@main-container-margin-top:     40px;
+
+// Headings
+@headings-font-family:    		"Fjalla One", @font-family-sans-serif;
+// Headings small colors
+@headings-small-color:          @gray-small-light;
+
+// Colors
+@gray-light:             		lighten(#000, 85%);
+@gray-small-light:             	lighten(#000, 60%);
+@text-color-hover:				@gray;
+@text-color:            		@gray;
+@color1:						#52a344; // Premiere couleur principale du site
+@color1-dark:					darken(@color1, 10%); // Premiere couleur principale du site
+
+// Colors no hover
+@widget-color-top:				lighten(#000, 96%); // Couleur du haut dans les dégradés sans hover
+@widget-color-bottom:			darken(@widget-color-top, 2%); // Couleur du bas dans les dégradés sans hover
+@widget-color-header-top:		lighten(#000, 93%); // Couleur du haut dans les dégradés sans hover pour les headers
+@widget-color-header-bottom:	darken(@widget-color-header-top, 2%); // Couleur du bas dans les dégradés sans hover pour les headers
+
+// Colors hover
+@widget-color-hover-top:		lighten(#000, 20%); // Couleur du haut dans les dégradés avec hover
+@widget-color-hover-bottom:		darken(@widget-color-hover-top, 3%); // Couleur du bas dans les dégradés avec hover
+@widget-color-hover-header-top:		lighten(#000, 28%); // Couleur du haut dans les dégradés avec hover pour les headers
+@widget-color-hover-header-bottom:	darken(@widget-color-hover-header-top, 3%); // Couleur du bas dans les dégradés avec hover pour les headers
+
+// Header
+@header-top-color:				#1B1B1B;
+@header-bottom-color:        	lighten(@header-top-color, 10%);
+
+// Top Container
+@top-container-top-color:       lighten(#000, 90%);
+@top-container-bottom-color:    darken(@top-container-top-color, 2%);
+@top-container-border-color:    darken(@top-container-top-color, 10%);
+
+// Widget
+@widget-header:					'.widget > header';

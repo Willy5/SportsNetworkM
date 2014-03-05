@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>PlayerDetail creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="pre-hidden" style="display: none">
+            <p class="text-info">Si cette case est cochée, la fiche de joueur que vous allez créer sera votre fiche.</p>
+            {{ form_row(form.public) }}
+        </div>
+        <div class="for-guest" style="display: none">{{ form_row(form.nameIfGuest) }}</div>
+        
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('playerdetail') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@TheFirefliesSportBundle/Resources/public/js/PlayerDetail/form.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
