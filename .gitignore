@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Symfony #
 ###################
 
@@ -20,6 +21,12 @@
 /index.html
 
 # Others ignoring files #
+=======
+# Fichier eclipse #
+###################
+*.project
+*.classpath
+>>>>>>> a5177fe3da25798c674ecb51f7b64e852234b715
 
 # Compiled source #
 ###################
@@ -38,7 +45,10 @@
 *.dmg
 *.gz
 *.iso
+<<<<<<< HEAD
 *.jar
+=======
+>>>>>>> a5177fe3da25798c674ecb51f7b64e852234b715
 *.rar
 *.tar
 *.zip
