@@ -1,3 +1,0 @@
-the_fireflies_user_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TheFirefliesUserBundle:Default:index }

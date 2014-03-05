@@ -1,32 +1,7 @@
-<<<<<<< HEAD
-# Symfony #
-###################
-
-/web/bundles/
-/app/bootstrap*
-/app/cache/*
-/app/logs/*
-/vendor/
-/app/config/parameters.yml
-/bin/
-/composer.phar
-/phpunit.phar
-/.project
-/.settings/
-/.buildpath
-*.php~
-*~
-/web/uploads/*
-/vagrant/.vagrant/
-/index.html
-
-# Others ignoring files #
-=======
 # Fichier eclipse #
 ###################
 *.project
 *.classpath
->>>>>>> a5177fe3da25798c674ecb51f7b64e852234b715
 
 # Compiled source #
 ###################
@@ -45,10 +20,6 @@
 *.dmg
 *.gz
 *.iso
-<<<<<<< HEAD
-*.jar
-=======
->>>>>>> a5177fe3da25798c674ecb51f7b64e852234b715
 *.rar
 *.tar
 *.zip
